@@ -10,13 +10,9 @@ function App() {
   const [searchValue, setSearchValue] = useState<number>(0)
   const { viewGap, moreGap, lessGap } = useGapManager()
 
-  const sortIncomeDesc = (a: Agent, b: Agent) => Math.sign(a.income + b.income)
+  // const sortIncomeDesc = (a: Agent, b: Agent) => Math.sign(a.income + b.income)
   const sortIncomeAsc = (a: Agent, b: Agent) => Math.sign(a.income - b.income)
   const sortIncome = () => {
-    // const sortAlgt = [sortIncomeAsc, sortIncomeDesc]
-
-    // current++;
-
     const temp = [...viewAgents]
     temp?.sort(sortIncomeAsc);
 
