@@ -1,33 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 import { useGapManager } from './features/gapManager';
-import { Agent } from './interfaces/agent.interface';
-import { agentRepository } from './repository/agent';
+import { useAgents } from './features/agentManager';
 
 function App() {
-  const [agents, setAgents] = useState<Agent[]>([])
-  const [viewAgents, setView] = useState<Agent[]>([])
   const [searchValue, setSearchValue] = useState<number>(0)
   const { viewGap, moreGap, lessGap } = useGapManager()
-
-  // const sortIncomeDesc = (a: Agent, b: Agent) => Math.sign(a.income + b.income)
-  const sortIncomeAsc = (a: Agent, b: Agent) => Math.sign(a.income - b.income)
-  const sortIncome = () => {
-    const temp = [...viewAgents]
-    temp?.sort(sortIncomeAsc);
-
-    setView(temp)
-  }
-
-  const searchAgents = () => {
-    const filteredAgents = agents?.filter((agent) => {
-      const diff = Math.abs(agent.income - searchValue)
-
-      return diff < 10000
-    })
-
-    setView(filteredAgents)
-  }
+  const { viewAgents, searchAgents } = useAgents()
+  const wrapSearchAgents = () => searchAgents(searchValue)
 
   const updateSearch = (event: any) => {
     if (
@@ -38,19 +18,13 @@ function App() {
     }
   }
 
-  useEffect(() => {
-    agentRepository.getAgents()
-      .then(setAgents)
-  }, [])
 
   return (
     <div className="App">
       <h1>Agent Me</h1>
 
       <input type="number" onChange={updateSearch} />
-      <button onClick={searchAgents}>Match</button>
-
-      <button onClick={sortIncome}>sort by income</button>
+      <button onClick={wrapSearchAgents}>Match</button>
 
       <div className="agents-table">
         <div className="agents-entity">
