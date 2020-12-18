@@ -7,7 +7,7 @@ export function useErrors() {
   const [error, setError] = useState<string>('')
 
   const errors = useMemo<{[key: string]: string}>(() => ({
-    valueLength: 'The value should be 5 or less',
+    valueLength: 'The value should be 5 digits',
     valueNumber: 'The value should be a number'
   }), [])
 
