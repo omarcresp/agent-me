@@ -1,13 +1,70 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: Helvetica;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  --zoe-text-black: #3F3E3A;
+  --zoe-text-gray: #5F5F5F;
+  --zoe-text-ligth-gray: #B4B4B4;
+  --zoe-bg-blue: #5C7BEB;
+  --zoe-bg-ligth-gray: #F5F5F5;
+  --zoe-bg-gray: #B4B4B4;
+  --zoe-bg-dark-gray: #5F5F5F;
+  --zoe-white: #FFFFFF;
+  --zoe-input-border: #DCDCDC;
+}
+
+body, html, #root {
+  height: 100%;
+}
+
+@media (min-width: 1400px) {
+  html {
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 2000px) {
+  html {
+    font-size: 22px;
+  }
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+*::-webkit-scrollbar {
+  width: .5rem;
+  height: .4rem;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: transparent;
+  border-radius: .25rem;
+}
+
+*:hover::-webkit-scrollbar-thumb {
+  background: var(--zoe-bg-gray);
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--zoe-bg-dark-gray);
 }
